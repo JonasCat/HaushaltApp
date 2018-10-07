@@ -1,0 +1,106 @@
+DIE HAUSHALTS-APP
+
+Ein Entwurf
+-----------------------------------
+Basis-funktionen
+
+Die App soll den Nutzer erlauben, Ausgaben und Einnahmen zu dokumentieren.
+Ausgaben und Einnhamen dürfen in benutzerdefinierte Kategorien (z.B. "Essen" und "Freizeit") gesetzt werden.
+Kategorien sollen beliebig viele Unterkategorien besitzen dürfen. (z.B. "Essen -> Gemüse")
+Kategorien sind immer entweder Einnahme oder Ausgabekategorien, nie beides. Einnahme und Ausgabe sind also auch Kategorien.
+Oberkategorie bildet der Monat. Über den Monaten bleibt die Kategorie GESAMT
+In jeder Kategorie soll der Benutzer die Möglichkeit haben, die Gesamtausgaben/einnahmen zu sehen.
+In jedem Monat sowie im GESAMT soll der Benutzer die Möglichkeit haben, die Anfangs- und Endsumme zu sehen.
+Ein Zahlungsmittel kann als Attribut hinzugefügt werden und danach gefiltert werden.
+
+Geile-funktionen
+
+Der Nutzer kann in jeder Kategorie mit beliebiger Tiefe Tortendiagramme zu den Ausgaben / Einnahmen generieren lassen
+Der Nutzer kann in beliebiger Kategorie einen zeitlichen Graphen zeichnen lassen, der den Geldverlauf zeichnet
+Der Nutzer bekommt Erinnerungen auf dem Handy, seine Einkäufe einzutragen.
+------------------------------------
+Strukturdiagramm Kategorien
+
+|GESAMT
+|-SEPTEMBER 2018
+| |-AUSGABEN
+| | |-ESSEN
+| | | |-SUPERMARKT
+| | | |-MENSA
+| | |-FREIZEIT
+| | |-HAUSHALT
+| |-EINNAHMEN
+| | |-TASCHENGELD
+| | |-STIPENDIUM
+|-OKTOBER 2018
+  |...identisch zu September
+  
+Es stellt sich die Frage ob die Monate vielleicht doch nicht die unterste Kategorie bilden sollten, um Wiederholungen zu vermeiden.
+Meiner Meinung nach ist es auf diese Art in der Umsetzung aber einfacher, da es der gedanklichen Strukturierung entspricht.
+---------------------------------------------
+Zustände der App
+
+Monatsfenster
+|-------------------------------|
+|MONAT                          |
+|-------------------------------|
+|                               |
+|[EINNAHMEN EINSEHEN]           |<---öffnet Kategorienfenster
+|[AUSGABEN EINSEHEN]            |
+|                               |
+|Anfangssumme                   |<---veränderbar
+|Endsumme                       |
+|Differenz                      |
+|-------------------------------|
+|[GRAPH ZEICHNEN]               |
+|-------------------------------|
+|[EINSTELLUNGEN]                |<---öffnet Einstellungen
+---------------------------------
+
+Kategorienfenster
+|-------------------------------|
+|KATEGORIE                      |
+|-------------------------------|
+|[UNTERKATEGORIE 1]             |<---öffnet analoges Fenster für Unterkategorie
+|[UNTERKATEGORIE N]             |
+|[ELEMENT 1]                    |<---öffnet Elementenfenster
+|[ELEMENT N]                    |
+|                               |
+|Summe Monat                    |
+|Summe Gesamt                   |
+|[ALLES ANZEIGEN]               |<---zeigt alle Elemente (Blätter) unabhängig der Unterkategorie
+|-------------------------------|
+|[neues Element]                |
+|[neue Unterkategorie]          |
+|-------------------------------|
+|[GRAPH ZEICHNEN]               |
+|-------------------------------|
+|[EINSTELLUNGEN]                |
+---------------------------------
+
+Einstellungenfenster
+|-------------------------------|
+|EINSTELLUNGEN                  |
+|-------------------------------|
+|FILTER-AUSWAHL:                |
+|[x] ALLES                      |
+|[ ] Zahlungsmittel 1           |<---filtert die angezeigten Elemente nach Zahlungsmittel
+|[ ] Zahlungsmittel n           |
+|[Zahlungsmittel hinzufügen]    |
+---------------------------------
+
+Elementenfenster
+|-------------------------------|
+|ELEMENT                        |<---Elementenname ist AUSGABE oder EINNAHME
+|-------------------------------|
+|Zahlungsmittel                 |
+|Datum                          |
+|Betrag                         |
+|Kategorie                      |
+|[editieren]                    |<---lässt Attribute editieren und speichern.
+---------------------------------
+
+Graphfenster
+<--- lässt in beliebiger tiefe Torten oder Zeitverlaufdiagramme zeichnen
+
+
